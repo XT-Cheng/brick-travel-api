@@ -37,7 +37,7 @@ export class CityRoute {
             city = req.body;
         }
         else {
-            city = JSON.parse(req.body);
+            city = JSON.parse(req.body.cities)[0];
             if (req.files[0])
                 city.thumbnail = `assets/img/${req.files[0].filename}`;
         }
@@ -52,7 +52,7 @@ export class CityRoute {
     }
 
     private static async insert(req: Request, res: Response, next: NextFunction) {
-        let city = JSON.parse(req.body.cities);
+        let city = JSON.parse(req.body.cities)[0];
         city.thumbnail = `assets/img/${req.files[0].filename}`;
         await CityModel.createCities(city);
         res.json([city]);
