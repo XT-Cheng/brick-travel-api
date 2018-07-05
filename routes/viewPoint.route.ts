@@ -52,7 +52,7 @@ export class ViewPointRoute {
     }
 
     private static async insert(req: Request, res: Response, next: NextFunction) {
-        let viewPoint = JSON.parse(req.body.viewPoint);
+        let viewPoint = JSON.parse(req.body.viewPoints)[0];
         viewPoint.images = [];
         (req.files as Express.Multer.File[]).forEach(file => {
             if (file.fieldname.startsWith('thumbnail')) {
@@ -95,7 +95,7 @@ export class ViewPointRoute {
             viewPoint = req.body;
         }
         else {
-            viewPoint = JSON.parse(req.body.viewPoint);
+            viewPoint = JSON.parse(req.body.viewPoints)[0];
             (req.files as Express.Multer.File[]).forEach(file => {
                 if (file.fieldname.startsWith('thumbnail')) {
                     viewPoint.thumbnail = `assets/img/${file.filename}`;

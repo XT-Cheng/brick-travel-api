@@ -82,6 +82,8 @@ export class ViewPoint extends Typegoose {
     rank: number;
     @arrayProp({ items: String })
     images: string[];
+    @arrayProp({ items: String })
+    tags: string[];
     @prop({ default: 0 })
     countOfComments: number;
     @arrayProp({ items: ViewPointComment })
@@ -110,6 +112,7 @@ export class ViewPoint extends Typegoose {
                 longtitude: 0,
                 category: 0,
                 rank: 0,
+                tags: 0,
                 images: 0,
                 countOfComments: 0
             });
