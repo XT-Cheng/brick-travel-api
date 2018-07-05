@@ -63,7 +63,7 @@ export class ViewPointRoute {
             }
         });
         await ViewPointModel.createViewPoint(viewPoint);
-        res.json(viewPoint);
+        res.json([viewPoint]);
     }
 
     private static async addComment(req: Request, res: Response, next: NextFunction) {
@@ -107,6 +107,6 @@ export class ViewPointRoute {
         }
 
         await ViewPointModel.updateViewPoint(viewPoint);
-        res.json(viewPoint);
+        res.json([viewPoint]);
     }
 }
